@@ -3,21 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ocianx | Complete IT Services &amp; Manpower Solutions</title>
+  <title>Ocianx | Enterprise IT Services &amp; Manpower Solutions</title>
   <style>
     :root {
       --bg: #ffffff;
-      --bg-soft: #f8fafc;
+      --bg-subtle: #f8fafc;
       --surface: #ffffff;
       --border: #e2e8f0;
+      --border-strong: #cbd5e1;
       --text: #0f172a;
-      --muted: #475569;
+      --text-secondary: #334155;
+      --muted: #64748b;
       --primary: #0284c7;
       --primary-dark: #0369a1;
-      --secondary: #2563eb;
-      --accent-soft: #e0f2fe;
-      --shadow: 0 12px 32px -12px rgba(15, 23, 42, 0.12);
-      --radius: 18px;
+      --secondary: #1d4ed8;
+      --accent-bg: #f0f9ff;
+      --accent-border: #bae6fd;
+      --success: #059669;
+      --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 12px 28px -8px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 44px -12px rgba(2, 132, 199, 0.14);
+      --radius: 16px;
     }
 
     * {
@@ -31,14 +37,11 @@
     }
 
     body {
-      font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+      font-family: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
       background-color: var(--bg);
-      background-image:
-        radial-gradient(circle at 10% 8%, rgba(2, 132, 199, 0.08), transparent 36%),
-        radial-gradient(circle at 90% 15%, rgba(37, 99, 235, 0.07), transparent 38%);
       color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -47,8 +50,34 @@
     }
 
     .container {
-      width: min(1160px, 92%);
+      width: min(1180px, 92%);
       margin: 0 auto;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background: #0f172a;
+      color: #f8fafc;
+      font-size: 0.84rem;
+      padding: 8px 0;
+    }
+
+    .top-bar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .top-bar span {
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    .top-bar a {
+      font-weight: 600;
+      color: #ffffff;
     }
 
     /* Navbar */
@@ -56,8 +85,8 @@
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(12px);
-      background: rgba(255, 255, 255, 0.9);
       border-bottom: 1px solid var(--border);
     }
 
@@ -65,39 +94,58 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 0;
+      padding: 15px 0;
       gap: 16px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      font-size: 1.35rem;
-      letter-spacing: 0.2px;
-      color: var(--text);
+      gap: 11px;
     }
 
-    .brand-badge {
-      width: 38px;
-      height: 38px;
+    .brand-logo {
+      width: 40px;
+      height: 40px;
       border-radius: 11px;
       display: grid;
       place-items: center;
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #ffffff;
       font-weight: 800;
-      font-size: 1.1rem;
-      box-shadow: 0 8px 18px -6px rgba(2, 132, 199, 0.55);
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+      box-shadow: 0 6px 16px -4px rgba(2, 132, 199, 0.45);
+    }
+
+    .brand-text strong {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--text);
+    }
+
+    .brand-text small {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--primary);
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
-      gap: 26px;
-      color: var(--muted);
+      gap: 28px;
+      color: var(--text-secondary);
       font-weight: 500;
       font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
@@ -110,10 +158,10 @@
       justify-content: center;
       gap: 8px;
       padding: 12px 22px;
-      border-radius: 12px;
+      border-radius: 11px;
       font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      font-size: 0.94rem;
+      transition: all 0.2s ease;
       cursor: pointer;
       border: none;
     }
@@ -121,62 +169,65 @@
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: #ffffff;
-      box-shadow: 0 10px 22px -8px rgba(2, 132, 199, 0.5);
+      box-shadow: 0 8px 20px -6px rgba(2, 132, 199, 0.48);
     }
 
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 28px -8px rgba(2, 132, 199, 0.65);
+      box-shadow: 0 12px 26px -6px rgba(2, 132, 199, 0.62);
     }
 
     .btn-outline {
       background: #ffffff;
-      border: 1px solid var(--border);
+      border: 1px solid var(--border-strong);
       color: var(--text);
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      box-shadow: var(--shadow-sm);
     }
 
     .btn-outline:hover {
-      background: var(--bg-soft);
       border-color: var(--primary);
       color: var(--primary);
+      background: var(--accent-bg);
       transform: translateY(-2px);
     }
 
-    /* Hero */
+    /* Hero Section */
+    .hero-wrapper {
+      background:
+        radial-gradient(circle at 0% 0%, rgba(2, 132, 199, 0.07), transparent 42%),
+        radial-gradient(circle at 100% 20%, rgba(29, 78, 216, 0.06), transparent 40%),
+        linear-gradient(to bottom, #ffffff, #f8fafc);
+      border-bottom: 1px solid var(--border);
+    }
+
     .hero {
-      padding: 76px 0 64px;
+      padding: 72px 0 68px;
       display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 38px;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 44px;
       align-items: center;
     }
 
-    .trust-slogan {
+    /* Left-side Slogan Banner */
+    .left-motto {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      border: 1px solid #bae6fd;
+      padding: 9px 16px;
+      border-left: 4px solid var(--primary);
+      background: var(--accent-bg);
+      border-radius: 0 10px 10px 0;
       color: var(--primary-dark);
-      font-size: 0.9rem;
       font-weight: 700;
-      margin-bottom: 18px;
-    }
-
-    .trust-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--primary);
+      font-size: 0.94rem;
+      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: clamp(2.15rem, 4.4vw, 3.4rem);
-      line-height: 1.16;
-      letter-spacing: -0.02em;
+      font-size: clamp(2.2rem, 4.3vw, 3.45rem);
+      line-height: 1.14;
+      letter-spacing: -0.025em;
+      font-weight: 800;
       margin-bottom: 18px;
       color: var(--text);
     }
@@ -188,11 +239,28 @@
       color: transparent;
     }
 
-    .hero p {
-      color: var(--muted);
-      font-size: 1.05rem;
+    .hero-desc {
+      color: var(--text-secondary);
+      font-size: 1.06rem;
       max-width: 58ch;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 30px;
+    }
+
+    .hero-tags span {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      background: #ffffff;
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 999px;
     }
 
     .hero-actions {
@@ -201,163 +269,400 @@
       gap: 14px;
     }
 
-    .hero-card {
-      background: var(--surface);
+    /* Right Helpdesk Card */
+    .helpdesk-card {
+      background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 28px;
-      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero-card h3 {
-      font-size: 1.2rem;
+    .helpdesk-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--success);
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      padding: 4px 11px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .helpdesk-card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .phone-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 16px 0 20px;
+    }
+
+    .phone-box small {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .phone-box strong {
+      font-size: 1.35rem;
+      color: var(--primary-dark);
+      letter-spacing: 0.3px;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .metric {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.15rem;
       color: var(--text);
     }
 
-    .phone-highlight {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--primary);
-      margin-top: 8px;
-      display: inline-block;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 20px;
-    }
-
-    .stat {
-      background: var(--bg-soft);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 15px;
-    }
-
-    .stat strong {
-      display: block;
-      font-size: 1.35rem;
-      color: var(--primary-dark);
-    }
-
-    .stat span {
-      font-size: 0.85rem;
+    .metric span {
+      font-size: 0.82rem;
       color: var(--muted);
     }
 
     /* Sections */
     section {
-      padding: 64px 0;
-    }
-
-    .section-soft {
-      background: var(--bg-soft);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+      padding: 76px 0;
     }
 
     .section-header {
       text-align: center;
-      max-width: 660px;
-      margin: 0 auto 44px;
+      max-width: 680px;
+      margin: 0 auto 48px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--primary);
+      margin-bottom: 8px;
     }
 
     .section-header h2 {
-      font-size: clamp(1.75rem, 3vw, 2.35rem);
-      margin-bottom: 10px;
-      color: var(--text);
+      font-size: clamp(1.8rem, 3.2vw, 2.45rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
     }
 
     .section-header p {
       color: var(--muted);
+      font-size: 1.02rem;
     }
 
-    .grid-3 {
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 24px;
     }
 
-    .card {
+    .service-card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 26px;
-      box-shadow: 0 6px 20px -10px rgba(15, 23, 42, 0.08);
-      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      padding: 28px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .card:hover {
+    .service-card:hover {
       transform: translateY(-5px);
       border-color: #7dd3fc;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-md);
     }
 
-    .icon-box {
-      width: 48px;
-      height: 48px;
+    .service-icon {
+      width: 50px;
+      height: 50px;
       border-radius: 13px;
       display: grid;
       place-items: center;
-      font-size: 1.35rem;
-      margin-bottom: 16px;
-      background: var(--accent-soft);
-      border: 1px solid #bae6fd;
+      font-size: 1.4rem;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      margin-bottom: 18px;
     }
 
-    .card h3 {
-      font-size: 1.14rem;
+    .service-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
       margin-bottom: 8px;
       color: var(--text);
     }
 
-    .card p {
+    .service-card p {
       color: var(--muted);
       font-size: 0.94rem;
+      margin-bottom: 16px;
     }
 
-    /* Contact Box */
-    .contact-box {
-      background: linear-gradient(135deg, #f0f9ff, #eff6ff);
-      border: 1px solid #bae6fd;
-      border-radius: 24px;
-      padding: 40px;
-      display: flex;
-      flex-wrap: wrap;
+    .service-link {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: inline-flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      box-shadow: var(--shadow);
+      gap: 5px;
     }
 
-    .contact-box h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin-bottom: 8px;
-      color: var(--text);
+    .service-link:hover {
+      color: var(--secondary);
     }
 
-    .contact-box p {
-      color: var(--muted);
-      max-width: 54ch;
-    }
-
-    footer {
-      background: #ffffff;
+    /* Why Ocianx Band */
+    .why-band {
+      background: var(--bg-subtle);
       border-top: 1px solid var(--border);
-      padding: 28px 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-      text-align: center;
+      border-bottom: 1px solid var(--border);
     }
 
-    @media (max-width: 900px) {
-      .hero {
+    .why-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .motto-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 34px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .motto-quote {
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.35;
+      color: var(--text);
+      border-left: 4px solid var(--primary);
+      padding-left: 16px;
+      margin-bottom: 16px;
+    }
+
+    .why-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .why-item {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .why-num {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: var(--accent-bg);
+      color: var(--primary-dark);
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    /* Contact & Quick Quote Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+      border: 1px solid var(--accent-border);
+      border-radius: 24px;
+      padding: 44px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-info h2 {
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      font-weight: 800;
+      margin: 10px 0 12px;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 22px;
+    }
+
+    .direct-call {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 22px;
+    }
+
+    .quote-form {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .quote-form h3 {
+      font-size: 1.15rem;
+      margin-bottom: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--border-strong);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.94rem;
+      color: var(--text);
+      background: #ffffff;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.12);
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 44px 0 28px;
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-brand strong {
+      font-size: 1.4rem;
+      color: #ffffff;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .footer-motto {
+      color: #38bdf8;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .footer-bottom {
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: #94a3b8;
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 99;
+      background: #16a34a;
+      color: #ffffff;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(22, 163, 74, 0.35);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease;
+    }
+
+    .floating-wa:hover {
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 960px) {
+      .hero,
+      .why-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
-        padding-top: 52px;
       }
-      .grid-3 {
+      .services-grid {
         grid-template-columns: 1fr 1fr;
       }
       .nav-links {
@@ -365,192 +670,328 @@
       }
     }
 
-    @media (max-width: 600px) {
-      .grid-3 {
+    @media (max-width: 620px) {
+      .services-grid {
         grid-template-columns: 1fr;
       }
-      .contact-box {
-        padding: 28px 20px;
+      .contact-grid {
+        padding: 26px 20px;
+      }
+      .top-bar {
+        display: none;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div><span>Ocianx IT Solutions</span> — Technology me bharosa hi hamari pahchan hai</div>
+      <div>24/7 IT Helpdesk &amp; Manpower Support: <a href="tel:9559048028">+91 9559048028</a></div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
   <header>
     <div class="container nav">
       <a href="#" class="brand">
-        <span class="brand-badge">O</span>
-        <span>Ocianx</span>
+        <span class="brand-logo">O</span>
+        <span class="brand-text">
+          <strong>Ocianx</strong>
+          <small>IT &amp; Manpower Hub</small>
+        </span>
       </a>
       <nav class="nav-links">
-        <a href="#services">IT Services</a>
-        <a href="#why-us">Why Ocianx</a>
-        <a href="#contact">Contact</a>
+        <a href="#services">All IT Services</a>
+        <a href="#why-ocianx">Why Ocianx</a>
+        <a href="#contact">Get Quote</a>
       </nav>
       <a href="tel:9559048028" class="btn btn-primary">Call: 9559048028</a>
     </div>
   </header>
 
   <main>
-    <section class="hero container">
-      <div>
-        <div class="trust-slogan">
-          <span class="trust-dot"></span>
-          <span>Technology me bharosa hi hamari pahchan hai</span>
-        </div>
-        <h1>Ocianx: <span class="gradient-text">Har IT Sevaye</span> Ek Hi Jagah</h1>
-        <p>
-          Cloud Setup, Website Design, CCTV Installation, Data Backup, Networking, VPS Setup, Computer Hardware aur Skilled IT Engineers &amp; Manpower — aapke office aur business ke har IT kaam ka complete solution.
-        </p>
-        <div class="hero-actions">
-          <a href="tel:9559048028" class="btn btn-primary">Abhi Call Karein: 9559048028</a>
-          <a href="https://wa.me/919559048028" target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp Support</a>
-        </div>
-      </div>
-
-      <aside class="hero-card">
-        <h3>Ocianx Direct Helpdesk</h3>
-        <p style="color: var(--muted); font-size: 0.92rem; margin-top: 4px;">
-          Kisi bhi IT service ya manpower requirement ke liye seedha baat karein:
-        </p>
-        <a href="tel:9559048028" class="phone-highlight">+91 9559048028</a>
-        <div class="stat-grid">
-          <div class="stat">
-            <strong>All-in-One</strong>
-            <span>Complete IT Services</span>
-          </div>
-          <div class="stat">
-            <strong>Expert</strong>
-            <span>IT Engineers &amp; Staff</span>
-          </div>
-          <div class="stat">
-            <strong>Fast</strong>
-            <span>On-Site &amp; Remote</span>
-          </div>
-          <div class="stat">
-            <strong>Trusted</strong>
-            <span>Reliable Support</span>
-          </div>
-        </div>
-      </aside>
-    </section>
-
-    <section id="services" class="section-soft">
-      <div class="container">
-        <div class="section-header">
-          <h2>Ocianx Ki Sabhi IT Sevaye</h2>
-          <p>Aapke business infrastructure, security, cloud aur manpower ki har zaroorat ke liye complete services.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="card">
-            <div class="icon-box">☁️</div>
-            <h3>Cloud Setup</h3>
-            <p>Cloud servers, domain, email hosting, SSL security aur scalable cloud deployment solutions.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🌐</div>
-            <h3>Website Design &amp; Development</h3>
-            <p>Modern, responsive business websites, landing pages, web portals aur custom web solutions.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">📹</div>
-            <h3>CCTV Installation</h3>
-            <p>HD/IP CCTV camera installation, DVR/NVR configuration aur mobile par live remote monitoring.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">💾</div>
-            <h3>Data Backup &amp; Recovery</h3>
-            <p>Automated cloud &amp; local data backup, disaster recovery aur important business data protection.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🖧</div>
-            <h3>Networking Solutions</h3>
-            <p>Office LAN/Wi-Fi setup, routers, switches, structured cabling, firewall aur VPN connectivity.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">👨‍💻</div>
-            <h3>IT Engineers &amp; Manpower Provide</h3>
-            <p>Experienced IT engineers, technical support staff aur project-based skilled manpower supply.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🖥️</div>
-            <h3>Computer Hardware &amp; AMC</h3>
-            <p>Desktops, laptops, servers, printers, hardware upgrades, repair aur annual maintenance support.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">⚡</div>
-            <h3>VPS Setup &amp; Server Management</h3>
-            <p>Linux/Windows VPS setup, reverse proxy, SSL, security hardening aur high-uptime server management.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon-box">🛠️</div>
-            <h3>Complete IT Support &amp; Software</h3>
-            <p>OS &amp; software installation, troubleshooting, cybersecurity aur har tarah ki daily IT assistance.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="why-us" class="container">
-      <div class="section-header">
-        <h2>Ocianx Hi Kyun?</h2>
-        <p>Technology me bharosa hi hamari pahchan hai — har kaam me quality aur zimmedari ke saath.</p>
-      </div>
-
-      <div class="grid-3">
-        <article class="card">
-          <div class="icon-box">🤝</div>
-          <h3>Bharosemand Kaam</h3>
-          <p>Transparent pricing, genuine hardware/software aur har project me long-term support.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon-box">🚀</div>
-          <h3>Ek Jagah Har Solution</h3>
-          <p>Website aur VPS se lekar CCTV, hardware aur IT manpower tak sab kuch ek hi team se.</p>
-        </article>
-
-        <article class="card">
-          <div class="icon-box">📞</div>
-          <h3>Direct Contact Support</h3>
-          <p>Kisi bhi emergency ya enquiry ke liye seedha sampark karein: <strong>9559048028</strong>.</p>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" class="container">
-      <div class="contact-box">
+    <!-- Hero Section -->
+    <div class="hero-wrapper">
+      <section class="hero container">
         <div>
-          <p style="color: var(--primary-dark); font-weight: 700; margin-bottom: 6px;">
+          <div class="left-motto">
+            <span>“Technology me bharosa hi hamari pahchan hai”</span>
+          </div>
+          <h1>Aapke Business Ke <span class="gradient-text">Har IT Kaam</span> Ka Bharosemand Partner</h1>
+          <p class="hero-desc">
+            <strong>Ocianx</strong> par aapko milti hai complete IT infrastructure aur digital services — Cloud Setup, Website Design, CCTV Installation, Data Backup, Networking, VPS Setup, Computer Hardware aur Skilled IT Engineers &amp; Manpower ek hi jagah.
+          </p>
+          <div class="hero-tags">
+            <span>Cloud &amp; VPS</span>
+            <span>Website Design</span>
+            <span>CCTV Security</span>
+            <span>Networking</span>
+            <span>Data Backup</span>
+            <span>Hardware &amp; AMC</span>
+            <span>IT Manpower</span>
+          </div>
+          <div class="hero-actions">
+            <a href="tel:9559048028" class="btn btn-primary">Abhi Call Karein: 9559048028</a>
+            <a href="#contact" class="btn btn-outline">Free Consultation Lein</a>
+          </div>
+        </div>
+
+        <aside class="helpdesk-card">
+          <div class="status-badge">
+            <span class="pulse-dot"></span>
+            <span>IT Engineers &amp; Support Available</span>
+          </div>
+          <h2>Ocianx Direct Helpdesk</h2>
+          <p style="color: var(--muted); font-size: 0.92rem;">
+            Naya setup karwana ho, IT staff chahiye, ya turant technical support — seedha baat karein:
+          </p>
+
+          <a href="tel:9559048028" class="phone-box">
+            <div>
+              <small>DIRECT HELPLINE NUMBER</small>
+              <strong>+91 9559048028</strong>
+            </div>
+            <span style="font-size: 1.4rem;">📞</span>
+          </a>
+
+          <div class="metrics-grid">
+            <div class="metric">
+              <strong>All-in-One</strong>
+              <span>A-to-Z IT Services</span>
+            </div>
+            <div class="metric">
+              <strong>Skilled Staff</strong>
+              <span>IT Engineers Supply</span>
+            </div>
+            <div class="metric">
+              <strong>On-Site &amp; Remote</strong>
+              <span>Fast Response Team</span>
+            </div>
+            <div class="metric">
+              <strong>100% Trusted</strong>
+              <span>Transparent Work</span>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </div>
+
+    <!-- Services Section -->
+    <section id="services" class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Complete IT Portfolio</span>
+        <h2>Ocianx Ki Sabhi IT Sevaye</h2>
+        <p>Chhote office se lekar bade enterprise tak — IT se judi har zaroorat ke liye end-to-end solutions.</p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div>
+            <div class="service-icon">☁️</div>
+            <h3>Cloud Setup &amp; Migration</h3>
+            <p>Business cloud servers, domain &amp; DNS management, corporate email setup, SSL certificates aur secure cloud infrastructure.</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">🌐</div>
+            <h3>Website Design &amp; Development</h3>
+            <p>Modern, fast-loading aur mobile-friendly business websites, landing pages, custom web portals aur SEO-ready design.</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">📹</div>
+            <h3>CCTV Installation &amp; Surveillance</h3>
+            <p>HD aur IP CCTV camera installation, DVR/NVR setup, office/warehouse security aur mobile par live remote viewing.</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">💾</div>
+            <h3>Data Backup &amp; Disaster Recovery</h3>
+            <p>Automated daily cloud &amp; local backups, NAS storage setup, ransomware protection aur critical data recovery solutions.</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">🖧</div>
+            <h3>Networking &amp; Firewall Setup</h3>
+            <p>Complete office LAN/Wi-Fi networking, structured cabling, routers, managed switches, VPN aur network security.</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">👨‍💻</div>
+            <h3>IT Engineers &amp; Manpower Provide</h3>
+            <p>Qualified IT support engineers, network technicians, system admins aur short-term ya long-term technical manpower supply.</p>
+          </div>
+          <a href="#contact" class="service-link">Hire IT Staff →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">🖥️</div>
+            <h3>Computer Hardware &amp; AMC</h3>
+            <p>Desktops, laptops, servers, printers supply, hardware upgrades, chip-level repair aur annual maintenance contracts (AMC).</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">⚡</div>
+            <h3>VPS Setup &amp; Server Management</h3>
+            <p>Linux &amp; Windows VPS deployment, Nginx/reverse proxy, SSL, automated backups, firewall hardening aur 24/7 uptime monitoring.</p>
+          </div>
+          <a href="#contact" class="service-link">Enquire Now →</a>
+        </article>
+
+        <article class="service-card">
+          <div>
+            <div class="service-icon">🛠️</div>
+            <h3>Complete IT Support &amp; Software</h3>
+            <p>Windows/Linux OS installation, licensed software setup, cybersecurity audits, troubleshooting aur daily IT helpdesk.</p>
+          </div>
+          <a href="#contact" class="service-link">Get Support →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why Ocianx Section -->
+    <section id="why-ocianx" class="why-band">
+      <div class="container why-grid">
+        <div class="motto-panel">
+          <span class="eyebrow">Our Core Promise</span>
+          <div class="motto-quote">
             “Technology me bharosa hi hamari pahchan hai”
+          </div>
+          <p style="color: var(--text-secondary); margin-bottom: 20px;">
+            Ocianx ka har project aur service commitment, transparency aur technical excellence par tika hai. Aapko alag-alag vendors ke paas jaane ki zaroorat nahi — hardware se lekar cloud aur IT engineers tak sab kuch ek hi trusted team sambhalti hai.
           </p>
-          <h2>Ocianx Se Apna IT Kaam Shuru Karein</h2>
+          <a href="tel:9559048028" class="btn btn-primary">Talk to Ocianx Team: 9559048028</a>
+        </div>
+
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-num">01</div>
+            <div>
+              <h3 style="font-size: 1.08rem; margin-bottom: 4px;">Single-Window IT Partner</h3>
+              <p style="color: var(--muted); font-size: 0.93rem;">Website, VPS, Cloud, CCTV, Networking, Hardware aur Manpower sab kuch ek hi roof ke niche.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-num">02</div>
+            <div>
+              <h3 style="font-size: 1.08rem; margin-bottom: 4px;">Verified &amp; Skilled IT Engineers</h3>
+              <p style="color: var(--muted); font-size: 0.93rem;">Aapke office ya project ke liye experienced technical engineers aur reliable manpower deployment.</p>
+            </div>
+          </div>
+
+          <div class="why-item">
+            <div class="why-num">03</div>
+            <div>
+              <h3 style="font-size: 1.08rem; margin-bottom: 4px;">Fast Resolution &amp; Direct Contact</h3>
+              <p style="color: var(--muted); font-size: 0.93rem;">Kisi bhi emergency ya enquiry ke liye seedha <strong>9559048028</strong> par call ya WhatsApp karein.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <span class="eyebrow">Connect With Ocianx</span>
+          <h2>Apna IT Kaam Ya Manpower Requirement Share Karein</h2>
           <p>
-            Cloud setup, website design, CCTV, networking, VPS, hardware ya IT engineers chahiye — abhi call ya WhatsApp karein.
+            “Technology me bharosa hi hamari pahchan hai” — kisi bhi IT service ke quotation ya consultation ke liye abhi call karein ya form bhar kar seedha WhatsApp par bhejein.
           </p>
-          <a href="tel:9559048028" class="phone-highlight">Contact Number: 9559048028</a>
+          <a href="tel:9559048028" class="direct-call">📞 +91 9559048028</a>
+          <div class="hero-actions">
+            <a href="tel:9559048028" class="btn btn-primary">Direct Call Karein</a>
+            <a href="https://wa.me/919559048028" target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp Chat</a>
+          </div>
         </div>
-        <div class="hero-actions">
-          <a href="tel:9559048028" class="btn btn-primary">Call 9559048028</a>
-          <a href="https://wa.me/919559048028" target="_blank" rel="noopener noreferrer" class="btn btn-outline">WhatsApp Karein</a>
-        </div>
+
+        <form class="quote-form" onsubmit="sendToWhatsApp(event)">
+          <h3>Quick Service Inquiry</h3>
+          <div class="form-group">
+            <label for="userName">Aapka Naam / Company Name</label>
+            <input type="text" id="userName" placeholder="Apna naam likhein" required />
+          </div>
+          <div class="form-group">
+            <label for="userPhone">Mobile Number</label>
+            <input type="tel" id="userPhone" placeholder="Apna contact number likhein" required />
+          </div>
+          <div class="form-group">
+            <label for="serviceType">Kaunsi IT Service Chahiye?</label>
+            <select id="serviceType">
+              <option value="Cloud Setup">Cloud Setup</option>
+              <option value="Website Design & Development">Website Design &amp; Development</option>
+              <option value="CCTV Installation">CCTV Installation</option>
+              <option value="Data Backup & Recovery">Data Backup &amp; Recovery</option>
+              <option value="Networking Solutions">Networking Solutions</option>
+              <option value="IT Engineers & Manpower Provide">IT Engineers &amp; Manpower Provide</option>
+              <option value="Computer Hardware & AMC">Computer Hardware &amp; AMC</option>
+              <option value="VPS Setup & Server Management">VPS Setup &amp; Server Management</option>
+              <option value="Complete IT Support">Other / Complete IT Support</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">WhatsApp Par Inquiry Bhejein</button>
+        </form>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
-      © 2026 <strong>Ocianx</strong> • Technology me bharosa hi hamari pahchan hai • Contact: <a href="tel:9559048028">9559048028</a>
+      <div class="footer-top">
+        <div class="footer-brand">
+          <strong>Ocianx</strong>
+          <div class="footer-motto">“Technology me bharosa hi hamari pahchan hai”</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-size: 0.85rem; color: #94a3b8;">Direct Contact &amp; WhatsApp</div>
+          <a href="tel:9559048028" style="font-size: 1.25rem; font-weight: 800; color: #ffffff;">+91 9559048028</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Ocianx. All Rights Reserved.</span>
+        <span>Cloud • Website • CCTV • Networking • Backup • Hardware • VPS • IT Manpower</span>
+      </div>
     </div>
   </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/919559048028" target="_blank" rel="noopener noreferrer" class="floating-wa">
+    💬 WhatsApp: 9559048028
+  </a>
+
+  <script>
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+      const name = document.getElementById("userName").value.trim();
+      const phone = document.getElementById("userPhone").value.trim();
+      const service = document.getElementById("serviceType").value;
+      const msg = `Namaste Ocianx,%0AMera naam: ${encodeURIComponent(name)}%0AContact: ${encodeURIComponent(phone)}%0AMujhe is service ki jankari chahiye: ${encodeURIComponent(service)}`;
+      window.open(`https://wa.me/919559048028?text=${msg}`, "_blank", "noopener,noreferrer");
+    }
+  </script>
 </body>
 </html>
